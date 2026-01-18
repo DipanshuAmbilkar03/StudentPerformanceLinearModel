@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="box">
+    <h2 align="center">Student Performance Predictor</h2>
+
+    <form method="POST">
+
+        <input type="number" step="any" name="hours" placeholder="Hours Studied" required>
+
+        <input type="number" step="any" name="previous" placeholder="Previous Scores" required>
+
+        <select name="extra">
+            <option value="1">Extracurricular Activities: Yes</option>
+            <option value="0">Extracurricular Activities: No</option>
+        </select>
+
+        <input type="number" step="any" name="sleep" placeholder="Sleep Hours" required>
+
+        <input type="number" step="any" name="papers" placeholder="Sample Question Papers Practiced" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3 align="center">
+            Predicted Performance Index: {{ prediction }}
+        </h3>
+    {% endif %}
+</div>
+
+</body>
+</html>

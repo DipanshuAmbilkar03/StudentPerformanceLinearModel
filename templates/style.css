@@ -1,0 +1,22 @@
+body {
+    font-family: Arial;
+    background: #f4f6fb;
+}
+.box {
+    width: 420px;
+    margin: 60px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+}
+button {
+    background: #4a6cf7;
+    color: white;
+    border: none;
+}

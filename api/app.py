@@ -8,7 +8,7 @@ app = Flask(
     template_folder="../templates"
 )
 
-model = pickle.load(open("../model.pkl", "rb"))
+model = pickle.load(open("/model.pkl", "rb"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():

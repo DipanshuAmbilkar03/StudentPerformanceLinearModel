@@ -1,17 +1,20 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../templates"
+)
 
-model = pickle.load(open("model.pkl", "rb"))
+model = pickle.load(open("../model.pkl", "rb"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     prediction = None
 
     if request.method == "POST":
-
         hours = float(request.form["hours"])
         previous = float(request.form["previous"])
         extra = int(request.form["extra"])
@@ -19,11 +22,10 @@ def index():
         papers = float(request.form["papers"])
 
         input_data = np.array([[hours, previous, extra, sleep, papers]])
-
-        prediction = model.predict(input_data)[0]
-        prediction = round(prediction, 2)
+        prediction = round(model.predict(input_data)[0], 2)
 
     return render_template("index.html", prediction=prediction)
 
-if __name__ == "__main__":
-    app.run()
+# Required for Vercel
+def handler(environ, start_response):
+    return app(environ, start_response)
